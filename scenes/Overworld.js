@@ -53,13 +53,105 @@ class Overworld extends Phaser.Scene {
 
         this.physics.world.on('worldbounds', (body, blockedUp, blockedDown, blockedLeft, blockedRight) => {
             if (blockedUp) {
+                console.log(this.player.x);
+                if(this.player.x < 500){
+                    this.cameras.main.flash(250);
+                    this.cameras.main.shake(250);
+                    this.cameras.main.pan(
+                        this.ROOMWIDTH*0,
+                        this.ROOMHEIGHT*0.5,
+                        3000,
+                        'Linear'
+                    );
+                    this.physics.world.setBounds(this.ROOMWIDTH-this.player.displayWidth/2, 0, 
+                        this.ROOMWIDTH+this.player.displayWidth, this.ROOMHEIGHT+this.player.displayHeight/2);
+                }
+
+                if(this.player.x > 800){
+                    this.cameras.main.flash(250);
+                    this.cameras.main.shake(250);
+                    this.cameras.main.pan(
+                        this.ROOMWIDTH*0,
+                        this.ROOMHEIGHT*0.5,
+                        3000,
+                        'Linear'
+                    );
+                    this.physics.world.setBounds(this.ROOMWIDTH-this.player.displayWidth/2, 0, 
+                        this.ROOMWIDTH+this.player.displayWidth, this.ROOMHEIGHT+this.player.displayHeight/2);
+                }
+                else{
+                    this.cameras.main.flash(250);
+                    this.cameras.main.shake(250);
+                    this.cameras.main.pan(
+                        this.ROOMWIDTH*1.5,
+                        this.ROOMHEIGHT*0.5,
+                        3000,
+                        'Linear'
+                    );
+                    this.physics.world.setBounds(this.ROOMWIDTH-this.player.displayWidth/2, 0, 
+                        this.ROOMWIDTH+this.player.displayWidth, this.ROOMHEIGHT+this.player.displayHeight/2);
+
+                }
+            }
+            if (blockedDown) {
+                if(this.player.x<500){
+                    this.cameras.main.flash(250);
+                    this.cameras.main.shake(250);
+                    this.cameras.main.pan(
+                        this.ROOMWIDTH*1.5,
+                        this.ROOMHEIGHT*3,
+                        3000,
+                        'Linear'
+                    );
+                    this.physics.world.setBounds(this.ROOMWIDTH-this.player.displayWidth/2, this.ROOMHEIGHT-this.player.displayHeight/2, 
+                        this.ROOMWIDTH+this.player.displayWidth, this.ROOMHEIGHT+this.player.displayHeight/2);
+                }
+            }
+            if (blockedLeft) {
+                console.log(this.player.y);
+                if(this.player.y>250){
+                    this.cameras.main.flash(250);
+                    this.cameras.main.shake(250);
+                    this.cameras.main.pan(
+                        this.ROOMWIDTH*0.5,
+                        this.ROOMHEIGHT*3,
+                        3000,
+                        'Linear'
+                    );
+                    this.physics.world.setBounds(0, this.ROOMHEIGHT-this.player.displayHeight/2, 
+                        this.ROOMWIDTH+this.player.displayWidth, this.ROOMHEIGHT+this.player.displayHeight/2);
+                }
+                if(this.player.y<250){
+                    this.cameras.main.flash(250);
+                    this.cameras.main.shake(250);
+                    this.cameras.main.pan(
+                        this.ROOMWIDTH*0.5,
+                        this.ROOMHEIGHT*0.5,
+                        3000,
+                        'Linear'
+                    );
+                    this.physics.world.setBounds(0, this.ROOMHEIGHT-this.player.displayHeight/2, 
+                        this.ROOMWIDTH+this.player.displayWidth, this.ROOMHEIGHT+this.player.displayHeight/2);
+                }
+            }
+
+            if (blockedRight) {
+                console.log(this.player.x);
+
+                if(this.player.x<400){
+
+                }
+
+                
+                this.cameras.main.flash(250);
+                this.cameras.main.shake(250);
                 this.cameras.main.pan(
-                    this.ROOMWIDTH*1.5,
-                    this.ROOMHEIGHT*0.5,
+                    this.ROOMWIDTH *-0.5,
+                    this.ROOMHEIGHT*1,
                     3000,
                     'Linear'
                 );
-                this.physics.world.setBounds(this.ROOMWIDTH-this.player.displayWidth/2, 0, 
+                this.physics.world.setBounds(0, this.ROOMHEIGHT-this.player.displayHeight/2, 
                     this.ROOMWIDTH+this.player.displayWidth, this.ROOMHEIGHT+this.player.displayHeight/2);
             }
         });
